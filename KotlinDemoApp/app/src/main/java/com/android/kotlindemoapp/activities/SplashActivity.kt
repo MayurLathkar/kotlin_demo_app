@@ -1,11 +1,13 @@
 package com.android.kotlindemoapp.activities
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.android.kotlindemoapp.databinding.ActivitySplashBinding
 import com.android.kotlindemoapp.fragments.SplashFragment
 
@@ -13,6 +15,19 @@ import com.android.kotlindemoapp.fragments.SplashFragment
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
+
+    private val PREFERENCES_NAME = "MyPreferences"
+    private var sharedPreferences: SharedPreferences? = null
+
+    fun getInstance(context: Context): SharedPreferences? {
+        if (sharedPreferences == null) {
+            // getSharedPreferences is the function of AppCompatActivity class
+            sharedPreferences = context.getSharedPreferences(PREFERENCES_NAME,
+                MODE_PRIVATE
+            )
+        }
+        return sharedPreferences
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,40 +53,34 @@ class SplashActivity : AppCompatActivity() {
             SplashFragment::class.java.name
         ).commitNow()
 
-
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
-            val split=Intent(this,LoginActivity::class.java)
-            startActivity(split)
-            finish()
 
+            val isUserLoggedIn = getInstance(this)?.getBoolean("IS_USER_LOGGED_IN", false)
+
+            if (isUserLoggedIn == true) {
+
+                startActivity(Intent(this, HomeActivity::class.java))
+
+            } else {
+
+                startActivity(Intent(this, LoginActivity::class.java))
+
+            }
+
+            finish()
         }, 3000)
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      /*            Splash Activity
-      *                    |
-      *              Splash Fragment // 3 sec // Use frame layout for adding or removing the fragment
-      *                    |
-      *  (Login Fragment || Register Fragment || Home page Activity)
-      *
-      *
-      * */
+/*            Splash Activity
+*                    |
+*              Splash Fragment // 3 sec // Use frame layout for adding or removing the fragment
+*                    |
+*  (Login Fragment || Register Fragment || Home page Activity)
+*
+*
+* */
 
 
 
