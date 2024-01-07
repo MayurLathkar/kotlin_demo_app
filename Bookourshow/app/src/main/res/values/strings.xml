@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name"><u>bookOurShow</u></string>
+    <string name="it_all_start_here">It All Start Here</string>
+    <string name="add_mobile_number">Add Mobile Number</string>
+    <string name="the_mobile_number_will_be_verified_by_an_otp">The Mobile Number will be verified by an OTP</string>
+    <string name="enter_or_edit_valid_10_digit_mobile_number_below">Enter or Edit Valid 10 digit Mobile Number Below</string>
+</resources>
