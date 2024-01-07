@@ -24,10 +24,10 @@ class LoginFragment: Fragment() {
     private val PREFERENCES_NAME = "MyPreferences"
     private var database: SharedPreferences? = null
 
-    fun getInstance(context: Context): SharedPreferences? {
+    fun getInstance(): SharedPreferences? {
         if (database == null) {
             // getSharedPreferences is the function of AppCompatActivity class
-            database = context.getSharedPreferences(PREFERENCES_NAME,
+            database = requireActivity().getSharedPreferences(PREFERENCES_NAME,
                 AppCompatActivity.MODE_PRIVATE
             )
         }
@@ -53,8 +53,8 @@ class LoginFragment: Fragment() {
 
             if (username == "Pritam" && password == "123456") {
 
-                //Put user logged in state value in Local storage
-                val database = getInstance(requireActivity())
+                //Put user logged in when state value in Local storage
+                val database = getInstance()
                 val editor = database?.edit()
 
                 editor?.putBoolean("IS_USER_LOGGED_IN", true)
