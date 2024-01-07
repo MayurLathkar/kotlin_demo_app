@@ -7,7 +7,7 @@ import com.android.kotlindemoapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(), MySampleInterface {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding // XML File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
