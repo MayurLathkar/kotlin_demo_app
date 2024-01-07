@@ -1,11 +1,12 @@
-package com.android.kotlindemoapp
+package com.android.kotlindemoapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.android.kotlindemoapp.R
 
-class ProductDetailsActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_details)
+        setContentView(R.layout.activity_home)
     }
 }
